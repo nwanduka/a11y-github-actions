@@ -1,4 +1,4 @@
-name: a11y-test
+name: axe-test
 on:
   push:
     branches: [main]
