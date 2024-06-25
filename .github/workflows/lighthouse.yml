@@ -1,0 +1,22 @@
+name: lighthouse-report
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use NodeJS 16
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - run: |
+        npm install
+        npm run build
+    - name: Run LIghthouse
+      run: |
+        npm install -g @lhci/cli@0.7.x
+        lhci autorun
